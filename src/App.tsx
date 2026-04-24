@@ -26,7 +26,7 @@ function App() {
   const [isFixing, setIsFixing] = useState<string | null>(null);
 
   const getIcon = (type: string, status: string) => {
-    const props = { size: 24, className: `asset-icon \${status}` };
+    const props = { size: 24, className: `asset-icon ${status}` };
     switch(type) {
       case 'database': return <Database {...props} />;
       case 'code': return <FileCode {...props} />;
@@ -140,7 +140,7 @@ function App() {
         
         <div className="asset-list">
           {assets.map(asset => (
-            <div key={asset.id} className={\`asset-card \${asset.status}\`}>
+            <div key={asset.id} className={`asset-card ${asset.status}`}>
               <div className="asset-info">
                 {getIcon(asset.type, asset.status)}
                 <div className="asset-details">
@@ -150,7 +150,7 @@ function App() {
               </div>
               
               <div className="asset-status">
-                <span className={\`badge \${asset.status}\`}>
+                <span className={`badge ${asset.status}`}>
                   {asset.status === 'vulnerable' ? 'Vulnerable - Plaintext' : 'Encrypted & Secured'}
                 </span>
                 
